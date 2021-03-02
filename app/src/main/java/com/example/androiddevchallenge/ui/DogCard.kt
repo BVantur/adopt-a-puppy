@@ -32,7 +32,7 @@ fun DogCard(dog: Dog, onClick: (Dog) -> Unit) {
         Box {
             CoilImage(
                 data = dog.image,
-                contentDescription = "Random cute yorkshire",
+                contentDescription = "Dogs image",
                 modifier = Modifier
                     .fillMaxSize()
                     .fillMaxHeight(),
