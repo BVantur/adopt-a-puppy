@@ -29,12 +29,15 @@ fun DogDetails(dog: Dog) {
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                Icon(
-                    Icons.Default.ArrowBack, "", Modifier.padding(8.dp).clickable {
+                    Icon(
+                        Icons.Default.ArrowBack, "",
+                        Modifier
+                            .padding(8.dp)
+                            .clickable {
 
-                    }
-                )
-            },
+                            }
+                    )
+                },
                 title = { Text(dog.name) })
         }
     ) {
