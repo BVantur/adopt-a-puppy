@@ -34,8 +34,7 @@ fun DogCard(dog: Dog, onClick: (Dog) -> Unit) {
                 data = dog.image,
                 contentDescription = "Dogs image",
                 modifier = Modifier
-                    .fillMaxSize()
-                    .fillMaxHeight(),
+                    .fillMaxSize(),
                 contentScale = ContentScale.Crop,
                 loading = {
                     Box(Modifier.matchParentSize()) {
