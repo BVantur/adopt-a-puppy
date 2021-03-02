@@ -53,26 +53,31 @@ fun MyApp() {
         composable(ROUTE_LIST) {
             DogList(navController = navController)
         }
-        composable(route = "$ROUTE_DETAILS/{$DOG_ID}", arguments = listOf(navArgument(DOG_ID) {
-            type = NavType.IntType
-        })) {
+        composable(
+            route = "$ROUTE_DETAILS/{$DOG_ID}",
+            arguments = listOf(
+                navArgument(DOG_ID) {
+                    type = NavType.IntType
+                }
+            )
+        ) {
             DogDetails(it.arguments!!.getInt(DOG_ID), navController = navController)
         }
     }
 }
 
-//@Preview("Light Theme", widthDp = 360, heightDp = 640)
-//@Composable
-//fun LightPreview() {
+// @Preview("Light Theme", widthDp = 360, heightDp = 640)
+// @Composable
+// fun LightPreview() {
 //    MyTheme {
 //        MyApp(arrayOf())
 //    }
-//}
+// }
 //
-//@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-//@Composable
-//fun DarkPreview() {
+// @Preview("Dark Theme", widthDp = 360, heightDp = 640)
+// @Composable
+// fun DarkPreview() {
 //    MyTheme(darkTheme = true) {
 //        MyApp(arrayOf())
 //    }
-//}
+// }
