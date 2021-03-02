@@ -18,99 +18,61 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.androiddevchallenge.model.Dog
-import com.example.androiddevchallenge.ui.DogCard
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.ui.ROUTE_DETAILS
+import com.example.androiddevchallenge.ui.ROUTE_LIST
+import com.example.androiddevchallenge.ui.screens.DogDetails
+import com.example.androiddevchallenge.ui.screens.DogDetailsArguments.DOG_ID
+import com.example.androiddevchallenge.ui.screens.DogList
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
-
-    private val dogs = arrayOf(
-        Dog(
-            "Chips",
-            "https://www.rd.com/wp-content/uploads/2020/06/GettyImages-185330333-edit.jpg",
-            "Description1"
-        ),
-        Dog(
-            "Puffy",
-            "https://www.rd.com/wp-content/uploads/2021/01/GettyImages-131188311.jpg",
-            "Description2"
-        ),
-        Dog(
-            "Speck",
-            "https://www.rd.com/wp-content/uploads/2019/01/shutterstock_115329475.jpg",
-            "Description3"
-        ),
-        Dog(
-            "Max",
-            "https://www.rd.com/wp-content/uploads/2021/01/GettyImages-588935825.jpg",
-            "Description4"
-        ),
-        Dog(
-            "Hooch",
-            "https://www.rd.com/wp-content/uploads/2019/01/shutterstock_589686617.jpg",
-            "Description5"
-        ),
-        Dog(
-            "Chopper",
-            "https://www.rd.com/wp-content/uploads/2019/01/shutterstock_123087826-e1548785863702.jpg",
-            "Description6"
-        ),
-        Dog(
-            "Buddy",
-            "https://www.rd.com/wp-content/uploads/2019/01/shutterstock_673465372.jpg",
-            "Description7"
-        ),
-        Dog(
-            "Bolt",
-            "https://www.rd.com/wp-content/uploads/2019/01/shutterstock_493937641.jpg",
-            "Description8"
-        ),
-    )
-
+    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp(dogs)
+                MyApp()
             }
         }
     }
 }
 
 // Start building your app here!
+@ExperimentalFoundationApi
 @Composable
-fun MyApp(items: Array<Dog>) {
-    Surface(color = MaterialTheme.colors.background) {
-        LazyColumn(Modifier.fillMaxWidth()) {
-            items(items) { item ->
-                DogCard(item) {
-
-                }
-            }
+fun MyApp() {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = ROUTE_LIST) {
+        composable(ROUTE_LIST) {
+            DogList(navController = navController)
+        }
+        composable(route = "$ROUTE_DETAILS/{$DOG_ID}", arguments = listOf(navArgument(DOG_ID) {
+            type = NavType.IntType
+        })) {
+            DogDetails(it.arguments!!.getInt(DOG_ID), navController = navController)
         }
     }
 }
 
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        MyApp(arrayOf())
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MyApp(arrayOf())
-    }
-}
+//@Preview("Light Theme", widthDp = 360, heightDp = 640)
+//@Composable
+//fun LightPreview() {
+//    MyTheme {
+//        MyApp(arrayOf())
+//    }
+//}
+//
+//@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+//@Composable
+//fun DarkPreview() {
+//    MyTheme(darkTheme = true) {
+//        MyApp(arrayOf())
+//    }
+//}

@@ -66,7 +66,7 @@ fun DogCard(dog: Dog, onClick: (Dog) -> Unit) {
                 modifier = Modifier
                     .align(Alignment.BottomStart)
                     .padding(bottom = 16.dp, start = 16.dp),
-                text = dog.description ?: "",
+                text = dog.shortDescription,
                 style = TextStyle(fontWeight = FontWeight.Light)
             )
         }

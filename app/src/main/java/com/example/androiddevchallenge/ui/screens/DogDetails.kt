@@ -20,11 +20,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.model.Dog
+import androidx.navigation.NavController
+import com.example.androiddevchallenge.model.dogs
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-fun DogDetails(dog: Dog) {
+fun DogDetails(dogId: Int, navController: NavController?) {
+    val dog = dogs.find {
+        it.id == dogId
+    } ?: return
     Scaffold(
         topBar = {
             TopAppBar(
@@ -34,7 +38,7 @@ fun DogDetails(dog: Dog) {
                         Modifier
                             .padding(8.dp)
                             .clickable {
-
+                                navController?.navigateUp()
                             }
                     )
                 },
@@ -71,4 +75,8 @@ fun DogDetails(dog: Dog) {
             }
         }
     }
+}
+
+object DogDetailsArguments {
+    const val DOG_ID ="dog_id"
 }
