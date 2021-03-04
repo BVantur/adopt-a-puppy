@@ -78,7 +78,8 @@ fun DogDetails(dogId: Int, navController: NavController?) {
                 )
                 Text(
                     modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
-                    text = dog.name
+                    text = dog.name,
+                    style = MaterialTheme.typography.h3
                 )
                 Text(
                     modifier = Modifier.padding(
@@ -87,7 +88,8 @@ fun DogDetails(dogId: Int, navController: NavController?) {
                         end = 16.dp,
                         bottom = 16.dp
                     ),
-                    text = dog.description
+                    text = dog.description,
+                    style = MaterialTheme.typography.body1
                 )
             }
         }
