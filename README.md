@@ -6,7 +6,7 @@
 
 
 ## :scroll: Description
-This app was created in spite of Android dev challenge for a 1. week. You can read more about this challenge [here](https://android-developers.googleblog.com/2021/02/android-dev-challenge-lift-off-with.html).
+This app was created as a task in the Android dev challenge with Jetpack Compose for a 1. week. You can read more about this challenge [here](https://android-developers.googleblog.com/2021/02/android-dev-challenge-lift-off-with.html).
 
 
 ## :camera_flash: Screenshots
